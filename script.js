@@ -29,6 +29,25 @@ function adicionarTarefa(event) {
     inputTarefa.focus();
 }
 
+function rederizarTarefas() {
+    tarefas.forEach(function (tarefa, indice) {
+        const linha = document.createAttribute("tr");
+
+        const colunaNumero = document.createAttribute("td");
+        colunaNumero.textContent = indice + 1;
+
+        const colunaNome = document.createAttribute("td");
+        colunaNome.textContent = tarefa.texto;
+
+        if (tarefa.concluida) {
+            colunaNome.classList.add(
+                "text-decoration-line-through",
+                ""
+            );
+        } 
+     });
+}
+
 function salvarTarefa() {
     localStorage.setItem("tarefas", JSON.stringify(tarefas));
 }
